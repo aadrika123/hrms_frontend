@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Dipu Singh
+//    Version - 1.0
+//    Date - 10 Sep 2022
+//    Revision - 1
+//    Project - HRMS
+//    Component  - App.js
+//    DESCRIPTION - This is App.js file.
+//////////////////////////////////////////////////////////////////////////////////////
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import Protected from './Components/Common/Authentication/Protected';
+import Header from './Components/Common/Header/Header';
+import Sidebar from './Components/Common/Sidebar/Sidebar';
+import Dashboard from './Pages/Dashboard';
+import Demo from './Pages/Demo';
+import ErrorPage from './Pages/ErrorPage';
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+      <Header />
+      <Sidebar />
+        <Routes>
+          <Route index path="/Dashboard" element={<Dashboard  />} />
+          <Route path="demo" element={<Protected Component={Demo} />} />
+          <Route path="login" element={<Login />} />
+          <Route path='*' element={<ErrorPage />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

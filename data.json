@@ -1,0 +1,59 @@
+{
+  "login": [
+    {
+      "id": 1,
+      "email": "test@gmail.com",
+      "password": "12345"
+    },
+    {
+      "email": "dipudon@mailinator.com",
+      "password": "dfgdfg",
+      "id": 2
+    },
+    {
+      "email": "dipudon@mailinator.com",
+      "password": "jghjhgjhgj",
+      "id": 3
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "fggfgfgfggf",
+      "id": 4
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "ccfdfdfdfdfdf",
+      "id": 5
+    },
+    {
+      "email": "sinacaza@mailinator.com",
+      "password": "sdffffffffffff",
+      "id": 6
+    },
+    {
+      "email": "dipudon@mailinator.com",
+      "password": "dfdfdfdfd",
+      "id": 7
+    },
+    {
+      "email": "dsingh197@gmail.com",
+      "password": "fgffffff",
+      "id": 8
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "dffffffffff",
+      "id": 9
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
