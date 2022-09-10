@@ -11,6 +11,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import Protected from './Components/Common/Authentication/Protected';
 import Header from './Components/Common/Header/Header';
+import Layout from './Components/Common/Layout';
 import Sidebar from './Components/Common/Sidebar/Sidebar';
 import Dashboard from './Pages/Dashboard';
 import Demo from './Pages/Demo';
@@ -21,14 +22,16 @@ function App() {
   return (
     <>
       <Router>
-      <Header />
-      <Sidebar />
-        <Routes>
-          <Route index path="/Dashboard" element={<Dashboard  />} />
-          <Route path="demo" element={<Protected Component={Demo} />} />
-          <Route path="login" element={<Login />} />
-          <Route path='*' element={<ErrorPage />} />
-        </Routes>
+        {/* <Header /> */}
+        {/* <Sidebar /> */}
+        <Layout>
+          <Routes>
+            <Route index path="/Dashboard" element={<Dashboard />} />
+            <Route path="demo" element={<Protected Component={Demo} />} />
+            <Route path="login" element={<Login />} />
+            <Route path='*' element={<ErrorPage />} />
+          </Routes>
+        </Layout>
       </Router>
     </>
   );
