@@ -20,8 +20,7 @@ function Header() {
     return (
         <>
             {
-                ((location.pathname != '/landing') && (location.pathname != '/') && (location.pathname != '/login') && (location.pathname != '/error')) && <div className="grid grid-cols-12 w-100 px-0 h-16 bg-white shadow-xl  z-50 relative animate__animated animate__fadeInDown" >
-                    
+                ((location.pathname != '/landing') && (location.pathname != '/') && (location.pathname != '/login') && (location.pathname != '/error')) && <div className="grid grid-cols-12 w-100 px-0 h-16 bg-white shadow-xl  z-50 relative animate__animated animate__fadeInDown" >                    
                     <div className="hidden sm:block col-span-0 sm:col-span-2">
                         <div className="grid grid-cols-12 place-items-center h-full">
                             <div className='col-span-2 col-start-2'><img style={{ 'width': '40px' }} src={logo} alt="hello" /></div>
