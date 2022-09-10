@@ -10,9 +10,13 @@
 import React from 'react'
 
 function ErrorPage() {
+  // console.log(process.env)
+  console.log(process.env.REACT_APP_TEST)
+  console.log("Base URl is : ",process.env.REACT_APP_BASE_URL)
   return (
     <>
     <h1>Page not Found!</h1>
+     ENV File test
     </>
   )
 }
