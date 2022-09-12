@@ -27,7 +27,7 @@ function Login() {
             <div className='bg-gray-100 h-screen'>
                 <div className='md:grid md:grid-cols-1'>
                     <div className='col-span-1 justify-self-center'>
-                        <h1 className='text-3xl text-center font-semibold text-gray-800 md:my-8'>Login</h1>
+                        <h1 className='text-3xl text-center font-semibold text-gray-800 md:my-8'>Login Page</h1>
                         <LoginForm />
                     </div>
                 </div>
@@ -37,3 +37,8 @@ function Login() {
 }
 
 export default Login
+
+/*
+Exported to -
+1. App.js
+*/

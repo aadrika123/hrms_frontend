@@ -110,6 +110,6 @@ function HeaderIcons(props) {
 export default HeaderIcons
 /**
  * Exported to :
- * 1. Header component
+ * 1. Header.js
  * 
  */

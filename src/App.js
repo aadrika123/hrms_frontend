@@ -9,27 +9,25 @@
 //////////////////////////////////////////////////////////////////////////////////////
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
-import Protected from './Components/Common/Authentication/Protected';
-import Header from './Components/Common/Header/Header';
-import Layout from './Components/Common/Layout';
-import Sidebar from './Components/Common/Sidebar/Sidebar';
+import Protected from './Components/Authentication/Protected';
+import Layout from './Components/Layout';
+import ErrorPage from './Pages/404/ErrorPage';
+import RedirectToErrorPage from './Pages/404/RedirectToErrorPage';
 import Dashboard from './Pages/Dashboard';
-import Demo from './Pages/Demo';
-import ErrorPage from './Pages/ErrorPage';
 import Login from './Pages/Login/Login';
+import MasterIndex from './Pages/Master/MasterIndex';
 
 function App() {
   return (
     <>
       <Router>
-        {/* <Header /> */}
-        {/* <Sidebar /> */}
         <Layout>
           <Routes>
-            <Route index path="/Dashboard" element={<Dashboard />} />
-            <Route path="demo" element={<Protected Component={Demo} />} />
+            <Route index path="/dashboard" element={<Dashboard />} />
+            <Route index path="/master" element={<MasterIndex />} />
             <Route path="login" element={<Login />} />
-            <Route path='*' element={<ErrorPage />} />
+            <Route path='*' element={<RedirectToErrorPage />} />
+            <Route path='/error' element={<ErrorPage />} />
           </Routes>
         </Layout>
       </Router>

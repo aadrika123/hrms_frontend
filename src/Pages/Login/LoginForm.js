@@ -13,6 +13,7 @@ import { MdVerified } from 'react-icons/md';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
+import jhlogo from '../../Assets/Images/jharkhand_logo.png';
 
 const SignupSchema = Yup.object().shape({
 
@@ -83,9 +84,9 @@ const LoginForm = (props) => {
                         <form onSubmit={handleSubmit}>
                             <div className='grid bg-white px-10 '>
                                 <div className='flex justify-center mt-3'>
-                                    <img className=' h-14' src="http://localhost:3001/static/media/logo1.5c4637e45ad69b06fad3.png" alt="" />
+                                    <img className=' h-14' src={jhlogo} alt="" />
                                 </div>
-                                <h1 className='text-center text-lg font-semibold my-1 capitalize'>
+                                <h1 className='text-center text-md font-semibold my-1 capitalize'>
                                     Human Resource Management System
                                 </h1>
 

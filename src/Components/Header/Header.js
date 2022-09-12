@@ -49,5 +49,5 @@ export default Header
 
 /*
 Exported to -
-1. App.js
+1. Layout.js
 */

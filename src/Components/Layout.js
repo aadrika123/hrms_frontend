@@ -1,3 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Dipu Singh
+//    Version - 1.0
+//    Date - 10 Sep 2022
+//    Revision - 1
+//    Project - HRMS
+//    Component  - 
+//    DESCRIPTION - 
+//////////////////////////////////////////////////////////////////////////////////////
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from './Header/Header'
@@ -21,3 +30,8 @@ const Layout = ({ children }) => {
 }
 
 export default Layout
+
+/*
+Exported to -
+1. App.js
+*/
