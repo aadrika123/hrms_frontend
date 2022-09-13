@@ -2,16 +2,24 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const AddNewDepartment = () => {
+const EditDepartment = (props) => {
+
+  const data = props.data
+
+  const filterData = data.filter(data=>data.id == props.btnId)
+    console.log("Filter Data",filterData, "Department is ", filterData[0].name)
+  
+
   return (
     <Formik
-      initialValues={{ DepartmentName: '', description: '', DepartmentStatus: true }}
+    enableReinitialize={true}   // This will remove existing filled data.
+      initialValues={{ DepartmentName: filterData[0].name, description: filterData[0].descriptoin, DepartmentStatus: true }}
       validationSchema={Yup.object({
         DepartmentName: Yup.string()
-          .max(15, 'Must be 15 characters or less')
+          .max(50, 'Must be 50 characters or less')
           .required('Required'),
         description: Yup.string()
-          .max(20, 'Must be 20 characters or less')
+          .max(50, 'Must be 50 characters or less')
           .required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
@@ -39,11 +47,11 @@ const AddNewDepartment = () => {
             <ErrorMessage name="DepartmentStatus" />
           </div>
           <div className='my-5 mx-5'>
-            <button className='bg-green-500 px-2 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Add Department</button>
+            <button className='bg-green-500 px-2 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Update Department</button>
           </div>
         </div>
       </Form>
     </Formik>
   );
 };
-export default AddNewDepartment
+export default EditDepartment
