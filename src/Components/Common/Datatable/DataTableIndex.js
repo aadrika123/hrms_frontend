@@ -107,15 +107,15 @@ function DataTableIndex({ searchText, fun, columns, data, addBtn, addBtnClik, ..
         This is just a very basic UI implementation:
       */}
 
-      <div className="pagination grid grid-cols-12 mt-5 pb-4 px-5">
-        <div className='md:col-span-4 col-span-6'>
+      <div className="pagination grid grid-cols-12 mt-5 pb-4 px-5 justify-self-center">
+        <div className='md:col-span-4 col-span-5'>
           <button className='hover:bg-gray-300 cursor-pointer' onClick={() => gotoPage(0)} disabled={!canPreviousPage}> <BiFirstPage size={25} /> </button>{' '}  {/* {'First PAge'} */}
           <button className='hover:bg-gray-300 cursor-pointer' onClick={() => previousPage()} disabled={!canPreviousPage}><GrFormPrevious size={25} /> </button>{' '}
           <button className='hover:bg-gray-300 cursor-pointer' onClick={() => nextPage()} disabled={!canNextPage}><GrFormNext size={25} /></button>{' '} {/* {'Next Page'} */}
           <button className='hover:bg-gray-300 cursor-pointer' onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}><BiLastPage size={25} /></button>{' '} {/* LAst Page*/}
         </div>
 
-        <div className='md:col-span-4 col-span-6 justify-self-center'>
+        <div className='md:col-span-4 col-span-4'>
           <span>
             Page{' '}
             <strong>
@@ -124,8 +124,8 @@ function DataTableIndex({ searchText, fun, columns, data, addBtn, addBtnClik, ..
           </span>
         </div>
 
-        <div className='md:col-span-4 col-span-12 justify-self-center md:justify-self-end'>
-          <select className="md:h-10 h-6 md:w-28 w-20 block md:px-3 shadow-lg bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500"
+        <div className='md:col-span-4 col-span-3 md:justify-self-end'>
+          <select className="md:h-10 h-8 md:w-28 w-20 block md:px-3 shadow-lg bg-white border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500"
             value={pageSize}
             onChange={e => {
               setPageSize(Number(e.target.value))
