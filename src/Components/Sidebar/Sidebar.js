@@ -14,11 +14,17 @@ import { AiFillPieChart } from 'react-icons/ai'
 import { SiFuturelearn } from 'react-icons/si'
 import { SiOpenaccess } from 'react-icons/si'
 import { AiFillDatabase } from 'react-icons/ai'
+import { useEffect } from 'react'
 // import Logo from '../assets/images/logo.svg'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const [open, setOpen] = useState(true)
   const location = useLocation()
+
+  useEffect(() => {
+    setOpen(!open)
+  }, [props.headerData])
+  
 
   const Menus = [
     { title: 'Dashboard', path: '/dashboard', src: <AiFillPieChart /> },

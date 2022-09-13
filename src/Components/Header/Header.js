@@ -15,8 +15,11 @@ import logo from './logo1.png'
 
 
 
-function Header() {
+function Header(props) {
     const location = useLocation();
+    const headerMenu=()=>{
+        props.headerAction();
+    }
     return (
         <>
             {
@@ -29,7 +32,7 @@ function Header() {
                         </div>
                     </div>
 
-                    <div className='col-span-9 sm:col-span-4 place-items-center'>
+                    <div  onClick={headerMenu} className='col-span-9 sm:col-span-4 place-items-center'>
                         <div className="grid grid-cols-12 place-items-center h-full">
                             <div className='cursor-pointer bg-gray-100 p-2 rounded-lg' ><HiOutlineMenuAlt2 color='black' size={16} /></div>
                             <div className='col-span-10'><h4 className='text-gray-900 font-bold text-sm sm:text-lg text-center'>Human Resource Management System</h4></div>
