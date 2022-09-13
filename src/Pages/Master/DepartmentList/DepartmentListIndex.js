@@ -61,9 +61,9 @@ function DepartmentListIndex() {
 
   return (
     <>
-      <div className='flex py-2 pl-5 bg-gradient-to-r from-indigo-200 via-purple-100 to-green-200'>
-        <div className='w-1/2 font-semibold text-xl'>{title} Departments</div>
-        {!list && <div className='w-1/2 flex justify-end mr-8'><button onClick={handleBackBtn} className='bg-indigo-600 hover:bg-indigo-400 hover:font-semibold hover:text-black px-4 text-base text-white rounded-sm shadow-2xl'>Back</button></div>}
+      <div className='relative flex py-3 pl-5 bg-gradient-to-r from-indigo-200 via-purple-100 to-green-200'>
+        <div className='font-semibold text-xl'>{title} Departments</div>
+        {!list && <div className='absolute inset-y-2 right-0 mr-2 md:mr-10'><button onClick={handleBackBtn} className='bg-indigo-600 hover:bg-indigo-400 hover:font-semibold hover:text-black px-4 py-1 text-base md:text-lg text-white rounded-sm shadow-2xl'>Back</button></div>}
       </div>
       {list && <DepartmentList data={data} add={addBtn} edit={editBtn} view={viewBtn} delete={deleteBtn} />}
       {addNew && <AddNewDepartment />}

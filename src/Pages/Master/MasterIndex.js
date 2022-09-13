@@ -26,7 +26,7 @@ function MasterIndex() {
     return (
         <>
 
-            <div className="grid grid-cols-12 rounded-lg m-5 shadow-xl broder-2 border-sky-200 bg-gray-200">
+            <div className="grid grid-cols-12 rounded-lg m-0 md:m-5 shadow-xl broder-2 border-sky-200 bg-gray-200">
                 <div className='col-span-12 sm:col-span-2 '>
                     <MailboxSidebar tabs={tabs} fun={tabSwitch} /></div>
                 {tabIndex == 0 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <CompanyDetailsIndex /> </div>}

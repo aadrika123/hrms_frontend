@@ -13,8 +13,8 @@ function SearchComponent({ searchText, filter, setFilter }) {
   return (
     <>
       <div className='my-2 flex'>
-       <p className='mx-2 font-semibold'> Search {searchText} : </p>
-        <input className='border-2 border-gray-600 px-2 bg-gray-200 rounded-sm' type="text" value={filter || ''} onChange={e => setFilter(e.target.value)} />
+       <p className='mx-2 font-semibold flex'> Search <span className='hidden md:block ml-1'> { searchText} : </span> </p>
+        <input className='border-2 border-gray-600 px-2 bg-gray-200 rounded-sm md:h-7 h-7 md:w-52 w-28' type="text" value={filter || ''} onChange={e => setFilter(e.target.value)} />
       </div>
     </>
   )
