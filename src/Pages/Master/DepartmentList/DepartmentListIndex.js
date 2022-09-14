@@ -3,14 +3,19 @@ import AddNewDepartment from './AddNewDepartment'
 import DepartmentList from './DepartmentList'
 import DeleteModel from '../../../Components/Common/Models/DeleteModel'
 import EditDepartment from './EditDepartment'
+import axios from 'axios'
 
 function DepartmentListIndex() {
+
+  const baseURL = process.env.REACT_APP_BASE_URL;
+
   const [title, setTitle] = useState("List of ")
   const [list, setList] = useState(true)
   const [addNew, setAddNew] = useState(false)
   const [edit, setEdit] = useState(false)
   const [modalIsOpen, setmodalIsOpen] = useState(false)  // set model open/ close
   const [btnId, setbtnId] = useState()
+  const [refetchList, setRefetchList] = useState(0)
 
 
   const handleBackBtn = () => { // Show list of data
@@ -49,15 +54,17 @@ function DepartmentListIndex() {
     setmodalIsOpen(false)
   }
   const handleDeleteTrue = (deletedBtnID) => {  //deletedBtnID is conformed deleted id.
-    console.log("Deleted Row ID : ",deletedBtnID)
+
+    axios.delete(`${baseURL}/DepartmentList/${deletedBtnID}`)
+      .then(function (res) {
+        console.log("Deleted", res)
+        setRefetchList(refetchList + 1)
+      })
+      .catch((error) => {
+        console.log("Error : ", error)
+      })
     setmodalIsOpen(false)
   }
-
-  const data = [
-    { id: 1, name: 'Sales Department', descriptoin: 'This is sales', status: 'Active' },
-    { id: 2, name: 'Project department', descriptoin: 'project', status: 'Active' },
-    { id: 3, name: 'HR department', descriptoin: 'HR', status: 'Deactive' }
-]
 
   return (
     <>
@@ -65,9 +72,9 @@ function DepartmentListIndex() {
         <div className='font-semibold text-xl'>{title} Departments</div>
         {!list && <div className='absolute inset-y-2 right-0 mr-2 md:mr-10'><button onClick={handleBackBtn} className='bg-indigo-600 hover:bg-indigo-400 hover:font-semibold hover:text-black px-4 py-1 text-base md:text-lg text-white rounded-sm shadow-2xl'>Back</button></div>}
       </div>
-      {list && <DepartmentList data={data} add={addBtn} edit={editBtn} view={viewBtn} delete={deleteBtn} />}
-      {addNew && <AddNewDepartment />}
-      {edit && <EditDepartment data={data} btnId={btnId} />}
+      {list && <DepartmentList add={addBtn} edit={editBtn} view={viewBtn} delete={deleteBtn} refetchList={refetchList} />}
+      {addNew && <AddNewDepartment handleBackBtn={handleBackBtn} />}
+      {edit && <EditDepartment btnId={btnId} handleBackBtn={handleBackBtn} />}
       {/* Delete Model Box */}
       <DeleteModel
         IsModalOpened={modalIsOpen}

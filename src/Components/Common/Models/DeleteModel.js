@@ -70,7 +70,7 @@ function DeleteDepartment(props) {
             >
                <p className='flex'> <TbAlertOctagon className='mt-0.5' size={20} color="black"/><div className='font-semibold pb-5 ml-2'>{dynData.body}</div></p>
                 <div className='flex justify-center'>
-                    <img src={showDeleteImg} alt="" className='h-20' />
+                    <img src={showDeleteImg} alt="" className='h-16' />
                 </div>
                 <div className='flex justify-center mt-4'>
                     <button className='bg-red-600 hover:bg-red-800 mr-1 px-5 py-2 rounded-sm shadow-md text-white text-sm font-medium' onMouseLeave={handleMouseLeave} onMouseEnter={handleMouseHover} onClick={e => onModalDeletYes(e)}>Delete</button>

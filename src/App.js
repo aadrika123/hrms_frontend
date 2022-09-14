@@ -16,8 +16,13 @@ import RedirectToErrorPage from './Pages/404/RedirectToErrorPage';
 import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login/Login';
 import MasterIndex from './Pages/Master/MasterIndex';
+// import { useQuery, QueryClientProvider, QueryClient, useQueryClient } from "react-query";
+
 
 function App() {
+
+  // const client = useQueryClient()
+
   return (
     <>
       <Router>

@@ -1,22 +1,54 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
+import usePostHookAxios from '../../../Components/Common/CustomHooks/usePostHookAxios';
+import { useState, useEffect } from 'react';
 
-const AddNewDepartment = () => {
+const AddNewDepartment = (props) => {
+
+  const baseURL = process.env.REACT_APP_BASE_URL;
+
+  const goBack = () => {
+    props.handleBackBtn()
+  }
+
+  //Add new record
+  const submitFormData = (data) => {
+    axios({
+      method: "post",
+      url: `${baseURL}/DepartmentList`,
+      data: {
+        "name": data.DepartmentName,
+        "descriptoin": data.description,
+        "status": data.DepartmentStatus,
+      },
+    })
+      .then(function (response) {
+        console.log("Data Added..", response)
+        goBack()
+      })
+      .catch(function (response) {
+        console.log("Failed to update Data", response);
+      });
+
+  }
+
   return (
     <Formik
       initialValues={{ DepartmentName: '', description: '', DepartmentStatus: true }}
       validationSchema={Yup.object({
         DepartmentName: Yup.string()
-          .max(15, 'Must be 15 characters or less')
+          .max(50, 'Must be 50 characters or less')
           .required('Required'),
         description: Yup.string()
-          .max(20, 'Must be 20 characters or less')
+          .max(50, 'Must be 50 characters or less')
           .required('Required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          // alert(JSON.stringify(values, null, 2));
+          submitFormData(values)
           setSubmitting(false);
         }, 400);
       }}
@@ -41,6 +73,7 @@ const AddNewDepartment = () => {
             </div>
             <div className='col-span-12'>
               <button className='bg-green-500 px-2 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Add Department</button>
+              <button onClick={goBack} className='bg-red-500 px-4 py-1 mx-2 rounded-sm hover:shadow-2xl hover:bg-red-600 shadow-lg'>Cancel</button>
             </div>
           </div>
         </div>

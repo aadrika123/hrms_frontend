@@ -3,59 +3,55 @@
     {
       "id": 1,
       "email": "test@gmail.com",
-      "password": "12345"
+      "password": "1234"
     },
     {
-      "email": "dipudon@mailinator.com",
-      "password": "dfgdfg",
+      "email": "admin@mailinator.com",
+      "password": "1234",
       "id": 2
     },
     {
       "email": "dipudon@mailinator.com",
       "password": "jghjhgjhgj",
       "id": 3
+    }
+  ],
+  "DepartmentList": [
+    {
+      "name": "Sales Department",
+      "descriptoin": "This is salesssdf",
+      "status": true,
+      "id": 1
     },
     {
-      "email": "admin@gmail.com",
-      "password": "fggfgfgfggf",
+      "id": 2,
+      "name": "Project Department",
+      "descriptoin": "This is project",
+      "status": true
+    },
+    {
+      "name": "HR department",
+      "descriptoin": "This is HR department",
+      "status": true,
+      "id": 3
+    },
+    {
+      "name": "Project Manager Post",
+      "descriptoin": "This is Project",
+      "status": false,
       "id": 4
     },
     {
-      "email": "admin@gmail.com",
-      "password": "ccfdfdfdfdfdf",
+      "name": "Master Department",
+      "descriptoin": "this is description..ok",
+      "status": true,
       "id": 5
     },
     {
-      "email": "sinacaza@mailinator.com",
-      "password": "sdffffffffffff",
+      "name": "Wilma Webb",
+      "descriptoin": "Aliquam maiores irur",
+      "status": false,
       "id": 6
-    },
-    {
-      "email": "dipudon@mailinator.com",
-      "password": "dfdfdfdfd",
-      "id": 7
-    },
-    {
-      "email": "dsingh197@gmail.com",
-      "password": "fgffffff",
-      "id": 8
-    },
-    {
-      "email": "admin@gmail.com",
-      "password": "dffffffffff",
-      "id": 9
-    },
-    {
-      "email": "sinacaza@mailinator.com",
-      "password": "dfggggggggggg",
-      "id": 10
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
     }
   ],
   "profile": {

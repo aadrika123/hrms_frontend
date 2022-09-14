@@ -1,19 +1,45 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import useFetchHook from '../../../Components/Common/CustomHooks/useFetchHook'
+import { useState } from 'react';
+import axios from 'axios';
 
 const EditDepartment = (props) => {
+  const baseURL = process.env.REACT_APP_BASE_URL;
 
-  const data = props.data
+  const goBack = () => {
+    props.handleBackBtn()
+  }
 
-  const filterData = data.filter(data=>data.id == props.btnId)
-    console.log("Filter Data",filterData, "Department is ", filterData[0].name)
-  
+  //Fetring Data from custom hook useFetchHook.js
+  const [data] = useFetchHook(`${baseURL}/DepartmentList/${props.btnId}`);
 
+  //Updating Data
+  const submitFormData = (data) => {
+    axios({
+      method: "put",
+      url: `${baseURL}/DepartmentList/${props.btnId}`,
+      data: {
+        "name": data.DepartmentName,
+        "descriptoin": data.description,
+        "status": data.DepartmentStatus,
+      },
+    })
+      .then(function (response) {
+        console.log("Data Update..", response);
+        goBack();
+      })
+      .catch(function (response) {
+        console.log("Failed to update Data", response);
+      });
+
+  }
   return (
     <Formik
-    enableReinitialize={true}   // This will remove existing filled data.
-      initialValues={{ DepartmentName: filterData[0].name, description: filterData[0].descriptoin, DepartmentStatus: true }}
+      enableReinitialize={true}   // This will remove existing filled data.
+      // initialValues={{ DepartmentName: filterData[0].name, description: filterData[0].descriptoin, DepartmentStatus: true }}
+      initialValues={{ DepartmentName: data?.name, description: data?.descriptoin, DepartmentStatus: data?.status }}
       validationSchema={Yup.object({
         DepartmentName: Yup.string()
           .max(50, 'Must be 50 characters or less')
@@ -24,7 +50,8 @@ const EditDepartment = (props) => {
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          // alert(JSON.stringify(values, null, 2));
+          submitFormData(values)
           setSubmitting(false);
         }, 400);
       }}
@@ -44,11 +71,12 @@ const EditDepartment = (props) => {
             </div>
             <div className='col-span-12 flex my-2'>
               <label htmlFor="DepartmentStatus" className='text-lg md:text-base font-semibold md:font-normal'>Is Active ?</label>
-              <p className='justify-center ml-2'><Field name="DepartmentStatus" type="checkbox" /></p>
+              <p className='justify-center ml-2'><Field name="DepartmentStatus" isChecked type="checkbox" /></p>
               <ErrorMessage name="DepartmentStatus" />
             </div>
             <div className='col-span-12'>
-              <button className='bg-green-500 px-2 py-1 rounded-sm shadow-md hover:shadow-2xl hover:bg-green-400' type="submit">Add Department</button>
+              <button className='bg-green-500 px-4 py-1 mx-2 rounded-sm hover:shadow-2xl hover:bg-green-600 shadow-lg' type="submit">Update</button>
+              <button onClick={goBack} className='bg-red-500 px-4 py-1 mx-2 rounded-sm hover:shadow-2xl hover:bg-red-600 shadow-lg'>Cancel</button>
             </div>
           </div>
         </div>

@@ -1,14 +1,24 @@
 import React from 'react'
 import DataTableIndex from '../../../Components/Common/Datatable/DataTableIndex'
+import { useQuery } from 'react-query'
+import axios from 'axios'
+import { useEffect } from 'react';
 
 function DepartmentList(props) {
+
+    // This base url is declared in .env file.
+    const baseURL = process.env.REACT_APP_BASE_URL;
 
     const addBtnClik = () => {
         props.add();
     }
 
-    const columns = [
+    useEffect(() => {       // Refetch the list data after an Item is deleted.
+        refetch();
+    }, [props.refetchList])
 
+
+    const columns = [
         {
             Header: '#',
             Cell: ({ row }) => (
@@ -29,13 +39,10 @@ function DepartmentList(props) {
             Cell: (props) => {
                 return (
                     <p>
-                        {props.value == 'Active' && <p className='bg-green-600 text-white font-semibold text-center px-1 py-0.5 rounded-md'>{props.value}</p>}
-                        {props.value == 'Deactive' && <p className='bg-red-600 text-white font-semibold text-center px-1 py-0.5 rounded-md'>{props.value}</p>}
+                        {props.value === true && <p className='bg-green-600 text-white font-semibold text-center py-0.5 rounded-md'>Active</p>}
+                        {props.value === false && <p className='bg-red-600 text-white font-semibold text-center py-0.5 rounded-md'>Deactive</p>}
+                        {/* {props.value == 'Deactive' && <p className='bg-red-600 text-white font-semibold text-center py-0.5 rounded-md'>{props.value}</p>} */}
                     </p>
-
-                    //   <p style={{ background: props.value === "Complated" ? "green" : "red" }}>
-                    //     {props.value}
-                    //   </p>
                 );
             }
         },
@@ -44,9 +51,9 @@ function DepartmentList(props) {
             accessor: 'id',
             Cell: ({ cell }) => (
                 <div>
-                    <button onClick={() => props.view(cell.row.values.id)} className='bg-sky-400 mx-1 px-3 py-1 rounded-sm shadow-lg hover:shadow-xl hover:bg-sky-800 hover:text-white text-black'>
+                    {/* <button onClick={() => props.view(cell.row.values.id)} className='bg-sky-400 mx-1 px-3 py-1 rounded-sm shadow-lg hover:shadow-xl hover:bg-sky-800 hover:text-white text-black'>
                         View
-                    </button>
+                    </button> */}
 
                     <button onClick={() => props.edit(cell.row.values.id)} className='bg-sky-400 mx-1 px-3 py-1 rounded-sm shadow-lg hover:shadow-xl hover:bg-sky-800 hover:text-white text-black'>
                         Edit
@@ -61,15 +68,25 @@ function DepartmentList(props) {
     ]
 
 
+    //Fetch Data using React-Query
+    const { isLoading, data, refetch, isError, error, status, isFetching } = useQuery("fetchDepartmentList", () => {
+        return axios.get(`${baseURL}/DepartmentList`);
+    })
+
+    if (isLoading) { <h1>Loading</h1> }
+
+    // console.log("Status : ",status)
+    // console.log("Error : ",error)
+    // console.log("isLoading : ",isLoading)
+
 
     return (
         <>
             <div className='border bg-white mb-20'>
-                {/* <div className='text-center text-xl font-medium'>Manage Role of - {props.userName}</div> */}
                 <div>
                     <div>
-                        {/* {!isLoading && <DataTableIndex searchText="User" columns={columns} data={data?.data.data} />} */}
-                        {<DataTableIndex searchText="User" columns={columns} data={props?.data} addBtn={true} addBtnClik={addBtnClik} />}
+                        {!isLoading && <DataTableIndex searchText="User" columns={columns} data={data?.data} addBtn={true} addBtnClik={addBtnClik} />}
+                        {/* {<DataTableIndex searchText="User" columns={columns} data={props?.data} addBtn={true} addBtnClik={addBtnClik} />} */}
                     </div>
                 </div>
             </div>
