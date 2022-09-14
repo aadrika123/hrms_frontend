@@ -16,26 +16,42 @@ import RedirectToErrorPage from './Pages/404/RedirectToErrorPage';
 import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login/Login';
 import MasterIndex from './Pages/Master/MasterIndex';
-// import { useQuery, QueryClientProvider, QueryClient, useQueryClient } from "react-query";
+import { contextVar } from './Components/Context/Context'
+
+import { toast, ToastContainer } from 'react-toastify';
+
+// import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
 
-  // const client = useQueryClient()
+
+  //context Data to active toast from anywhere
+  const contextData = {
+    notify: (toastData, actionFlag) => {
+      toast.dismiss()
+      { actionFlag == 'error' && toast.error(toastData) }
+      { actionFlag == 'info' && toast.info(toastData) }
+      { actionFlag == 'success' && toast.success(toastData) }
+      { actionFlag == 'warn' && toast.warn(toastData) }
+    }
+  };
 
   return (
     <>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route index path="/dashboard" element={<Dashboard />} />
-            <Route index path="/master" element={<MasterIndex />} />
-            <Route path="login" element={<Login />} />
-            <Route path='*' element={<RedirectToErrorPage />} />
-            <Route path='/error' element={<ErrorPage />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <contextVar.Provider value={contextData}>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route index path="/dashboard" element={<Dashboard />} />
+              <Route index path="/master" element={<MasterIndex />} />
+              <Route path="login" element={<Login />} />
+              <Route path='*' element={<RedirectToErrorPage />} />
+              <Route path='/error' element={<ErrorPage />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </contextVar.Provider>
     </>
   );
 }

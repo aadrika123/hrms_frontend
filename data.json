@@ -36,22 +36,10 @@
       "id": 3
     },
     {
-      "name": "Project Manager Post",
-      "descriptoin": "This is Project",
-      "status": false,
-      "id": 4
-    },
-    {
       "name": "Master Department",
       "descriptoin": "this is description..ok",
-      "status": true,
-      "id": 5
-    },
-    {
-      "name": "Wilma Webb",
-      "descriptoin": "Aliquam maiores irur",
       "status": false,
-      "id": 6
+      "id": 5
     }
   ],
   "profile": {

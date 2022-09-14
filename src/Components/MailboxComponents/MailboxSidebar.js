@@ -20,7 +20,8 @@ function MailboxSidebar(props) {
 
     return (
         <>
-            <aside className="" >
+        
+            <aside className="overflow-x-auto" >
                 <div className="py-4 pl-4 rounded flex flex-row sm:flex-col sm:pl-0">
                     {
                         props.tabs.map((data) => (
@@ -36,7 +37,7 @@ function MailboxSidebar(props) {
 export default MailboxSidebar
 /**
  * Exported to :
- * 1. MailboxIndex.js
+ * 1. MasterIndex.js
  * 
  */
 

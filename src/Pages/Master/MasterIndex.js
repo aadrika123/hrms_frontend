@@ -17,7 +17,9 @@ function MasterIndex() {
     const tabs = [
         { title: "Company Details", tabIndex: 0 },
         { title: "Department List", tabIndex: 1 },
-        { title: "Designation List", tabIndex: 2 }
+        { title: "Designation List", tabIndex: 2 },
+        { title: "Document List", tabIndex: 3 },
+        { title: "Designation Test", tabIndex: 4 }
 
     ]
     const tabSwitch = (index) => {        //tabSwitch function receive tabIndex to switch between tabs called from Sidebar menu
@@ -25,15 +27,18 @@ function MasterIndex() {
     }
     return (
         <>
-
-            <div className="grid grid-cols-12 rounded-lg m-0 md:m-5 shadow-xl broder-2 border-sky-200 bg-gray-200">
+            {/* <div className='overflow-x-auto'> */}
+            <div className="grid grid-cols-12 rounded-lg m-0 md:m-5 md:px-0 pr-5 shadow-xl broder-2 border-sky-200 bg-gray-200">
                 <div className='col-span-12 sm:col-span-2 '>
                     <MailboxSidebar tabs={tabs} fun={tabSwitch} /></div>
                 {tabIndex == 0 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <CompanyDetailsIndex /> </div>}
                 {tabIndex == 1 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <DepartmentListIndex /> </div>}
-                {/* {tabIndex == 2 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <RoleWiseUserIndex /> </div>}      */}
-
+                {tabIndex == 2 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <CompanyDetailsIndex /> </div>}
+                {tabIndex == 3 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <CompanyDetailsIndex /> </div>}
+                {tabIndex == 4 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}>  </div>}
             </div>
+
+            {/* </div> */}
         </>
     )
 }

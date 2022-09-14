@@ -1,11 +1,11 @@
 //////////////////////////////////////////////////////////////////////////////////////
-//    Author - Talib Hussain
+//    Author - Dipu Singh
 //    Version - 1.0
-//    Date - 24 june 2022
+//    Date - 10 Sep 2022
 //    Revision - 1
-//    Project - JUIDCO
-//    Component  - SearchComponent
-//    DESCRIPTION - SearchComponent Component
+//    Project - HRMS
+//    Component  -
+//    DESCRIPTION - 
 //////////////////////////////////////////////////////////////////////////////////////
 import React from 'react'
 

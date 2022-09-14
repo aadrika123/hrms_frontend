@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AddNewDepartment from './AddNewDepartment'
 import DepartmentList from './DepartmentList'
 import DeleteModel from '../../../Components/Common/Models/DeleteModel'
+import { contextVar } from '../../../Components/Context/Context'
 import EditDepartment from './EditDepartment'
 import axios from 'axios'
 
 function DepartmentListIndex() {
+  const { notify } = useContext(contextVar);
 
   const baseURL = process.env.REACT_APP_BASE_URL;
-
   const [title, setTitle] = useState("List of ")
   const [list, setList] = useState(true)
   const [addNew, setAddNew] = useState(false)
@@ -52,6 +53,8 @@ function DepartmentListIndex() {
   const handleCloseModal = () => {  // Cancel Delete.
     console.log("Canceled")
     setmodalIsOpen(false)
+    notify('message', 'success')
+
   }
   const handleDeleteTrue = (deletedBtnID) => {  //deletedBtnID is conformed deleted id.
 
