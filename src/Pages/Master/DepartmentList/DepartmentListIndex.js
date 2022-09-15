@@ -53,7 +53,7 @@ function DepartmentListIndex() {
   const handleCloseModal = () => {  // Cancel Delete.
     console.log("Canceled")
     setmodalIsOpen(false)
-    notify('message', 'success')
+    notify('Delete Cancel', 'warn')
 
   }
   const handleDeleteTrue = (deletedBtnID) => {  //deletedBtnID is conformed deleted id.
@@ -61,6 +61,7 @@ function DepartmentListIndex() {
     axios.delete(`${baseURL}/DepartmentList/${deletedBtnID}`)
       .then(function (res) {
         console.log("Deleted", res)
+        notify('Deleted Successfully', 'success')
         setRefetchList(refetchList + 1)
       })
       .catch((error) => {

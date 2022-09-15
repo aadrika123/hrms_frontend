@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import usePostHookAxios from '../../../Components/Common/CustomHooks/usePostHookAxios';
 import { useState, useEffect } from 'react';
+import { contextVar } from '../../../Components/Context/Context'
+
 
 const AddNewDepartment = (props) => {
+  const { notify } = useContext(contextVar);
 
   const baseURL = process.env.REACT_APP_BASE_URL;
 
@@ -26,6 +29,7 @@ const AddNewDepartment = (props) => {
     })
       .then(function (response) {
         console.log("Data Added..", response)
+        notify('Department Added Successfully', 'success')
         goBack()
       })
       .catch(function (response) {

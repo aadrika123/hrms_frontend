@@ -32,14 +32,14 @@
     {
       "name": "HR department",
       "descriptoin": "This is HR department",
-      "status": true,
+      "status": false,
       "id": 3
     },
     {
       "name": "Master Department",
-      "descriptoin": "this is description..ok",
-      "status": false,
-      "id": 5
+      "descriptoin": "this",
+      "status": true,
+      "id": 4
     }
   ],
   "profile": {

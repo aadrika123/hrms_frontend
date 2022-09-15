@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import useFetchHook from '../../../Components/Common/CustomHooks/useFetchHook'
 import { useState } from 'react';
 import axios from 'axios';
+import { contextVar } from '../../../Components/Context/Context'
+
 
 const EditDepartment = (props) => {
+  const { notify } = useContext(contextVar);
+
   const baseURL = process.env.REACT_APP_BASE_URL;
 
   const goBack = () => {
@@ -28,6 +32,7 @@ const EditDepartment = (props) => {
     })
       .then(function (response) {
         console.log("Data Update..", response);
+        notify('Department Updated', 'success')
         goBack();
       })
       .catch(function (response) {

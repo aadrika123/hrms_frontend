@@ -16,11 +16,10 @@ import RedirectToErrorPage from './Pages/404/RedirectToErrorPage';
 import Dashboard from './Pages/Dashboard';
 import Login from './Pages/Login/Login';
 import MasterIndex from './Pages/Master/MasterIndex';
+
 import { contextVar } from './Components/Context/Context'
-
 import { toast, ToastContainer } from 'react-toastify';
-
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -29,6 +28,7 @@ function App() {
   //context Data to active toast from anywhere
   const contextData = {
     notify: (toastData, actionFlag) => {
+      console.log("Yaa1", toastData, actionFlag)
       toast.dismiss()
       { actionFlag == 'error' && toast.error(toastData) }
       { actionFlag == 'info' && toast.info(toastData) }
@@ -38,9 +38,10 @@ function App() {
   };
 
   return (
-    <>
-      <contextVar.Provider value={contextData}>
+    <>    
+      <contextVar.Provider value={contextData}>  {/* Get message data from any component. */}
         <Router>
+          <ToastContainer position="top-right" autoClose={2000} /> {/* Passing Toast in every page. */}
           <Layout>
             <Routes>
               <Route index path="/dashboard" element={<Dashboard />} />
