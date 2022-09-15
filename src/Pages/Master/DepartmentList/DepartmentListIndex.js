@@ -1,3 +1,12 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//    Author - Dipu Singh
+//    Version - 1.0
+//    Date - 14 Sep 2022
+//    Revision - 1
+//    Project - HRMS
+//    Component  - DepartmentListIndex.js
+//    DESCRIPTION - 
+//////////////////////////////////////////////////////////////////////////////////////
 import React, { useContext, useState } from 'react'
 import AddNewDepartment from './AddNewDepartment'
 import DepartmentList from './DepartmentList'

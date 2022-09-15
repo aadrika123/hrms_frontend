@@ -61,7 +61,7 @@ function DeleteDepartment(props) {
     }
 
     return (
-        <div>
+        <div > {/*onBlur={onModalClose}*/}
             <Modal
                 isOpen={openModel}
                 // onAfterOpen={e => afterOpenModal(e)}
