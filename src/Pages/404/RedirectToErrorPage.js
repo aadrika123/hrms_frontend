@@ -8,10 +8,14 @@
 //    DESCRIPTION - 
 //////////////////////////////////////////////////////////////////////////////////////
 import React from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 function RedirectToErrorPage() {
-    const naviage = useNavigate()
-    return naviage('/error')
+
+    return (
+        <>
+            <Navigate to="/error" replace={true} />
+        </>
+    )
 }
 
 export default RedirectToErrorPage
