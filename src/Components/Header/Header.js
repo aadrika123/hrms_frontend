@@ -18,6 +18,7 @@ import logo from './logo1.png'
 function Header(props) {
     const location = useLocation();
     const headerMenu=()=>{
+        // console.log("Header Icon clicked in Header.js")
         props.headerAction();
     }
     return (
