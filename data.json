@@ -1,4 +1,74 @@
 {
+  "companyDetails": {
+    "name": "Aadrika enterprises",
+    "Website": "www.aadrikaenterprises.com",
+    "TINNo": "656466862366655",
+    "CINNo": "U67190TN2014PTC096978",
+    "TDSNo": "1645964978",
+    "PanNO": "EXCPK5604R"
+  },
+  "companyBranchList": [
+    {
+      "id": 1,
+      "address": "ABCE, Rode 3",
+      "location": "Lalpur Ranchi",
+      "gstin": "AKJHDK5656",
+      "contact": "9658747847",
+      "email": "head@cdomain.com",
+      "officeType": "Head Office",
+      "status": true
+    },
+    {
+      "id": 2,
+      "address": "XYZ Line, Road 5",
+      "location": "Patna Bihar",
+      "gstin": "JIUY8",
+      "contact": "9696987400",
+      "email": "branch@cdomain.com",
+      "officeType": "Branch Office",
+      "status": false
+    },
+    {
+      "address": "Excepturi et volupta",
+      "location": "Aut amet Nam in id",
+      "gstin": "Ad quis id quod dis",
+      "contact": "Aperiam accusamus vo",
+      "email": "dujaqurah@mailinator.com",
+      "officeType": "Voluptas esse dolor",
+      "status": true,
+      "id": 10
+    },
+    {
+      "address": "Nulla sit iste rerum",
+      "location": "Aperiam voluptatem v",
+      "gstin": "Ullamco corporis ali",
+      "contact": "Saepe iste ex delect",
+      "email": "vikyt@mailinator.com",
+      "officeType": "Praesentium aut exce",
+      "status": true,
+      "id": 11
+    },
+    {
+      "address": "Corporis ipsam esse",
+      "location": "Ut autem nesciunt e",
+      "gstin": "Repellendus Ea opti",
+      "contact": "Laudantium explicab",
+      "email": "radogojos@mailinator.com",
+      "officeType": "Consequat Inventore",
+      "status": false,
+      "id": 12
+    },
+    {
+      "address": "Voluptate quam id od",
+      "location": "Quis deserunt qui vo",
+      "gstin": "Qui eum Nam sint ita",
+      "contact": "Sed eos nihil minim ",
+      "email": "geza@mailinator.com",
+      "officeType": "Placeat quia est et",
+      "status": true,
+      "id": 13
+    }
+  ],
   "login": [
     {
       "id": 1,

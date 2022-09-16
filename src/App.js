@@ -23,7 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
-  const [isLogin, setIsLogin] = useState()
+  const [isLogin, setIsLogin] = useState(true)
 
   useEffect(() => {
     let token = JSON.parse(window.localStorage.getItem('token'))

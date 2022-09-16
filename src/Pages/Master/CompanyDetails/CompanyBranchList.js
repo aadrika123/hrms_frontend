@@ -12,6 +12,7 @@ import DataTableIndex from '../../../Components/Common/Datatable/DataTableIndex'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 import { useEffect } from 'react';
+import useFetchHook from '../../../Components/Common/CustomHooks/useFetchHook';
 
 function CompanyBranchList(props) {
 
@@ -35,12 +36,28 @@ function CompanyBranchList(props) {
             )
         },
         {
-            Header: 'Department Name',
-            accessor: 'name'
+            Header: 'Address',
+            accessor: 'address'
         },
         {
-            Header: 'Description',
-            accessor: 'descriptoin'
+            Header: 'Location',
+            accessor: 'location'
+        },
+        {
+            Header: 'Contact',
+            accessor: 'contact'
+        },
+        {
+            Header: 'Email',
+            accessor: 'email'
+        },
+        {
+            Header: 'Type',
+            accessor: 'officeType'
+        },
+        {
+            Header: 'GSTIN',
+            accessor: 'gstin'
         },
         {
             Header: 'Status',
@@ -76,17 +93,21 @@ function CompanyBranchList(props) {
         }
     ]
 
-
+    
     //Fetch Data using React-Query
-    const { isLoading, data, refetch, isError, error, status, isFetching } = useQuery("fetchCompanyBranchList", () => {
-        return axios.get(`${baseURL}/DepartmentList`);
+    const { isLoading, data:ndata, refetch, isError, error, status, isFetching } = useQuery("getCompanyBranchList", () => {
+        return axios.get(`${baseURL}/companyBranchList`);
     })
-
-    if (isLoading) { <h1>Loading</h1> }
-
+    
+    // if (isLoading) { <h1>Loading</h1> }
+    
     // console.log("Status : ",status)
     // console.log("Error : ",error)
     // console.log("isLoading : ",isLoading)
+    
+    // const [data] = useFetchHook(`${baseURL}/companyBranchList`);
+    // console.log(data)
+    // console.log("NData",ndata)
 
 
     return (
@@ -94,7 +115,8 @@ function CompanyBranchList(props) {
             <div className='border bg-white mb-20'>
                 <div>
                     <div>
-                        {!isLoading && <DataTableIndex searchText="Branch" columns={columns} data={data?.data} addBtn={true} addBtnClik={addBtnClik} />}
+                        {/* {data && <DataTableIndex searchText="Branch" columns={columns} data={data} addBtn={true} addBtnClik={addBtnClik} />} */}
+                        {!isLoading && <DataTableIndex searchText="Branch" columns={columns} data={ndata?.data} addBtn={true} addBtnClik={addBtnClik} />}
                         {/* {<DataTableIndex searchText="User" columns={columns} data={props?.data} addBtn={true} addBtnClik={addBtnClik} />} */}
                     </div>
                 </div>

@@ -7,12 +7,28 @@
 //    Component  - CompanyDetails.js
 //    DESCRIPTION - 
 //////////////////////////////////////////////////////////////////////////////////////
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import companyImage from '../../../Assets/illustration/companyImage.png'
 import { Button } from "@material-tailwind/react";
 import { FaEdit } from 'react-icons/fa';
+import axios from 'axios';
 
 function CompanyDetails(props) {
+  const [data, setData] = useState()
+  const baseURL = process.env.REACT_APP_BASE_URL;
+
+  useEffect(() => {
+    axios.get(`${baseURL}/companyDetails`)
+    .then((res)=>{
+      setData(res)
+    })
+    .then((error)=>{
+      console.log("error in fetching ", error)
+    })
+  }, [])
+  
+
+
   return (
     <>
       {/* <div className='relative flex py-3 pl-5 bg-gradient-to-r from-indigo-200 via-purple-100 to-green-200'>
@@ -33,9 +49,9 @@ function CompanyDetails(props) {
                 <div>PAN No</div>
               </div>
               <div className='col-span-8 font-medium text-gray-600'>
-                <div>Aadrika enterprises</div>
-                <div>U67190TN2014PTC096978</div>
-                <div>EXCPK5604R</div>
+                <div>{data?.data.name}</div>
+                <div>{data?.data.CINNo}</div>
+                <div>{data?.data.PanNO}</div>
               </div>
             </div>
           </div>
@@ -47,9 +63,9 @@ function CompanyDetails(props) {
                 <div>Website</div>
               </div>
               <div className='col-span-8 font-medium text-gray-600'>
-                <div>656466862366655</div>
-                <div>1645964978</div>
-                <div>www.aadrikaenterprises.com</div>
+              <div>{data?.data.TINNo}</div>
+                <div>{data?.data.TDSNo}</div>
+                <div>{data?.data.Website}</div>
               </div>
             </div>
           </div>

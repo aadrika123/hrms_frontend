@@ -16,6 +16,7 @@ import CompanyDetails from './CompanyDetails';
 import { useState } from 'react';
 import DeleteCompanyBranch from './DeleteCompanyBranch';
 import EditCompanyDetails from './EditCompanyDetails';
+import AddCompanyBranch from './AddCompanyBranch';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,10 +51,21 @@ export default function CompanyDetailsIndex() {
   const [openModel, setOpenModel] = useState(false)
   const [forRefetchList, setForRefetchList] = useState(0)
   const [companyEdit, setCompanyEdit] = useState(false)
+  const [addNew, setAddNew] = useState(false)
+  const [list, setList] = useState(true)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleAdd=()=>{
+    setAddNew(true)
+    setList(false)
+  }
+  const handleBackBtn=()=>{
+    setAddNew(false)
+    setList(true)
+  }
 
   const deleteBtn = (bId) => {
     console.log("Delte Btn id is ", bId)
@@ -83,7 +95,8 @@ export default function CompanyDetailsIndex() {
         </TabPanel>
         <TabPanel value={value} index={1}>
           {/* <CompanyBranchList add={addBtn} edit={editBtn} view={viewBtn} delete={deleteBtn} refetchList={refetchList}/> */}
-          <CompanyBranchList delete={deleteBtn} forRefetchList={forRefetchList} />
+          {list && <CompanyBranchList add={handleAdd} delete={deleteBtn} forRefetchList={forRefetchList} />}
+          {addNew && <AddCompanyBranch handleBackBtn={handleBackBtn }  />}
         </TabPanel>
       </Box>
     </>

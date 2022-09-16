@@ -8,7 +8,7 @@
 //    DESCRIPTION - 
 //////////////////////////////////////////////////////////////////////////////////////
 import axios from 'axios';
-import React,{useState, useEffect, useContext} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import DeleteModel from '../../../Components/Common/Models/DeleteModel'
 import { contextVar } from '../../../Components/Context/Context'
 
@@ -23,8 +23,8 @@ function DeleteCompanyBranch(props) {
     useEffect(() => {
         setmodalIsOpen(props.openModel)
     }, [props.openModel])
-    
-    
+
+
     const handleCloseModal = () => {  // Cancel Delete.
         console.log("Canceled")
         // setmodalIsOpen(false)
@@ -33,11 +33,13 @@ function DeleteCompanyBranch(props) {
     }
 
     const handleDeleteTrue = (btnId) => {  //deletedBtnID is conformed deleted id.
-        axios.delete(`${baseURL}/DepartmentList/${btnId}`)
+        axios.delete(`${baseURL}/companyBranchList/${btnId}`)
             .then(function (res) {
                 console.log("Deleted", res)
                 notify('Deleted Successfully', 'success')
                 props.refetchList() //Refetch List data after deletion step 1
+                props.closeModel()
+
             })
             .catch((error) => {
                 console.log("Error : ", error)

@@ -17,8 +17,8 @@ function Login() {
 
     useEffect(() => {
         let token = JSON.parse(window.localStorage.getItem('token'))
-        if (token) {
-            return navigate('/Dashboard')
+        if (!token) {
+            return navigate('/login')
         }
     });
 
