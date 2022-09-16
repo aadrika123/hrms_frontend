@@ -7,7 +7,7 @@
 //    Component  - App.js
 //    DESCRIPTION - This is App.js file.
 //////////////////////////////////////////////////////////////////////////////////////
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import Protected from './Components/Authentication/Protected';
 import Layout from './Components/Layout';
@@ -23,12 +23,22 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
+  const [isLogin, setIsLogin] = useState()
+
+  useEffect(() => {
+    let token = JSON.parse(window.localStorage.getItem('token'))
+    if (token) {
+        return setIsLogin(true)
+        // return navigate('/Dashboard')
+    }
+});
+
+
 
 
   //context Data to active toast from anywhere
   const contextData = {
     notify: (toastData, actionFlag) => {
-      console.log("Yaa1", toastData, actionFlag)
       toast.dismiss()
       { actionFlag == 'error' && toast.error(toastData) }
       { actionFlag == 'info' && toast.info(toastData) }
@@ -38,14 +48,14 @@ function App() {
   };
 
   return (
-    <>    
+    <>
       <contextVar.Provider value={contextData}>  {/* Get message data from any component. */}
         <Router>
           <ToastContainer position="top-right" autoClose={2000} /> {/* Passing Toast in every page. */}
           <Layout>
             <Routes>
-              <Route index path="/dashboard" element={<Dashboard />} />
-              <Route index path="/master" element={<MasterIndex />} />
+              <Route index path="/dashboard" element={<Protected isLogin={isLogin}><Dashboard /></Protected>} />
+              <Route index path="/master" element={<Protected isLogin={isLogin}><MasterIndex /></Protected>} />
               <Route path="login" element={<Login />} />
               <Route path='*' element={<RedirectToErrorPage />} />
               <Route path='/error' element={<ErrorPage />} />

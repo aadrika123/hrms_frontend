@@ -7,59 +7,65 @@
 //    Component  - LoginForm.js
 //    DESCRIPTION - 
 //////////////////////////////////////////////////////////////////////////////////////
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Formik, Field } from 'formik';
 import { MdVerified } from 'react-icons/md';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
 import jhlogo from '../../Assets/Images/jharkhand_logo.png';
+import { contextVar } from '../../Components/Context/Context'
 
 const SignupSchema = Yup.object().shape({
 
 
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string()
-        .min(6, 'Minimum six character !')
+        .min(3, 'Minimum Three character !')
         .max(50, 'Too Long!')
         .required('Required'),
     // .matches(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/, 'Password can only contain Latin letters.')
 
 });
 
-const LoginForm = (props) => {
+const LoginForm = () => {
+
+    const { notify } = useContext(contextVar);
+
 
     const navigate = useNavigate();
     const [showMsg, setShowMsg] = useState()
+    const [data, setData] = useState()
 
 
-    const handleLogin = (values) => {
-        axios
-            .post("http://localhost:8000/login", {
-                email: values.email,
-                password: values.password
-            })
+    useEffect(() => {
+        axios.get("http://localhost:8000/login")
             .then((res) => {
-                // localStorage.setItem("token", res.data.data)
-                localStorage.setItem("token", JSON.stringify("abcdefghijklmnop"))
-
-                navigate("/Dashboard")
-                console.log(res)
-                setShowMsg(res.data.status)
-
+                setData(res)
+                // loginFun()
             })
             .catch(err => {
                 console.log(err)
-                // console.log("MessGe", err.response.data.message)
-                // console.log("---", err.response.data)
-                setShowMsg(err.response.data.message)
+                console.log("Error in fetching", err)
             })
+    }, [])
+
+    const handleLogin = (values) => {
+        data?.data.map((e) => {
+            if (values.email === e.email && values.password === e.password) {
+                localStorage.setItem("token", JSON.stringify("abcdefghijklmnop"))
+                navigate("/Dashboard")
+                notify('Login Successfully', 'success')
+            } else {
+                console.log("Wrong Credencial.")
+            }
+        })
     }
 
     return (
         <div>
             <Formik
-                initialValues={{ ulb: '', email: '', password: '' }}
+                initialValues={{ email: '', password: '' }}
                 validationSchema={SignupSchema}
 
                 onSubmit={(values, { setSubmitting }) => {
@@ -126,7 +132,7 @@ const LoginForm = (props) => {
                                     {/* <p><Link to="/register" className='text-blue-600 font-semibold'> Create New Account</Link></p> */}
                                     {/* <p><Link to="/reset-password" className='text-blue-600 font-semibold'>Reset Password </Link></p> */}
                                     {/* <p className='flex justify-center'><p> Registration Pending ? </p> <Link to="/registrationStatus" className='text-blue-600 font-semibold ml-1'> Check Status </Link></p> */}
-                                </div> 
+                                </div>
 
                                 <div className='my-5 self-center justify-self-center'>
                                     <button
