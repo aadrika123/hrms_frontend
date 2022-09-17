@@ -79,6 +79,18 @@
       "email": "admin@mailinator.com",
       "password": "1234",
       "id": 2
+    },
+    {
+      "messaging_product": "whatsapp",
+      "to": "919708846652",
+      "type": "template",
+      "template": {
+        "name": "Hello World",
+        "language": {
+          "code": "en_US"
+        }
+      },
+      "id": 3
     }
   ],
   "DepartmentList": [

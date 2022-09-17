@@ -51,9 +51,9 @@ function DataTableIndex({ searchText, fun, columns, data, addBtn, addBtnClik, ..
       <div className="overflow-hidden ">
         <div className='flex'>
           <div className='flex-initial'><SearchComponent searchText={searchText} filter={globalFilter} setFilter={setGlobalFilter} /></div>
-          <div className='ml-2'><button className='bg-sky-400 px-3 my-2 pr-3  shadow-lg rounded py-1 text-white hover:shadow-2xl hover:bg-green-600 text-center relative' onMouseEnter={() => setbounce('')} onMouseLeave={() => setbounce('hidden')}><CSVLink data={data}> Export</CSVLink><div className={bounce + ' absolute h-full top-3 text-sm left-0 text-center animate-bounce'}><AiOutlineArrowDown /></div></button></div>
+          <div className='ml-2'><button className='bg-sky-400 md:px-3 px-1 my-2 pr-3  shadow-lg rounded py-1 text-white hover:shadow-2xl hover:bg-green-600 text-center relative' onMouseEnter={() => setbounce('')} onMouseLeave={() => setbounce('hidden')}><CSVLink data={data}> Export</CSVLink><div className={bounce + ' absolute h-full top-3 text-sm left-0 text-center animate-bounce'}><AiOutlineArrowDown /></div></button></div>
           {addBtn && <div className='w-1/2 flex justify-end'>
-            <div onClick={addBtnClik} className='my-2 px-2 py-1 cursor-pointer text-white bg-green-500 hover:bg-green-800 hover:animate-pulse rounded-sm shadow-lg'>Add New</div>
+            <div onClick={addBtnClik} className='my-2 py-1 px-1 cursor-pointer text-white bg-green-500 hover:bg-green-800 hover:animate-pulse rounded-sm shadow-lg'>Add New</div>
           </div>
           }
         </div>

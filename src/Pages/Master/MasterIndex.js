@@ -10,6 +10,7 @@
 import { useState } from 'react'
 import MailboxSidebar from '../../Components/MailboxComponents/MailboxSidebar'
 import CompanyDetailsIndex from './CompanyDetails/CompanyDetailsIndex'
+import ContactIndex from './Contacts/ContactIndex'
 import DepartmentListIndex from './DepartmentList/DepartmentListIndex'
 import ProjectVisibilityIndex from './ProjectVisibility/ProjectVisibilityIndex'
 
@@ -19,9 +20,9 @@ function MasterIndex() {
         { title: "Company Details", tabIndex: 0 },
         { title: "Department List", tabIndex: 1 },
         { title: "Project Visibility", tabIndex: 2 },
-        { title: "Designation List", tabIndex: 3 },
+        { title: "Contact List", tabIndex: 3 },
         { title: "Document List", tabIndex: 4 },
-        { title: "Designation Test", tabIndex: 5 }
+        { title: "Designation List", tabIndex: 5 }
 
     ]
     const tabSwitch = (index) => {        //tabSwitch function receive tabIndex to switch between tabs called from Sidebar menu
@@ -36,8 +37,8 @@ function MasterIndex() {
                 {tabIndex == 0 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <CompanyDetailsIndex /> </div>}
                 {tabIndex == 1 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <DepartmentListIndex /> </div>}
                 {tabIndex == 2 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <ProjectVisibilityIndex /> </div>}
-                {tabIndex == 3 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <CompanyDetailsIndex /> </div>}
-                {tabIndex == 4 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}>  </div>}
+                {tabIndex == 3 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}> <ContactIndex /> </div>}
+                {tabIndex == 4 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}>  <CompanyDetailsIndex/></div>}
                 {tabIndex == 5 && <div className='col-span-12 sm:col-span-10 shadow-lg bg-white overflow-y-scroll' style={{ 'height': '90vh' }}>  </div>}
             </div>
 

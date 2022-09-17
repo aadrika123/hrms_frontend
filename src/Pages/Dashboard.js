@@ -1,8 +1,11 @@
 import React from 'react'
+import SendWhatsApp from './WhatsApp/SendWhatsApp'
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <SendWhatsApp />
+    </>
   )
 }
 
